@@ -680,7 +680,7 @@
 <td><code>#{"src" "test"}</code></td>
 </tr>
 <tr>
-<td><code>linter</code></td>
+<td><code>linters</code></td>
 <td>clojure-lsp custom linters, check the diagnostics settings section below</td>
 <td><code>{:unused-public-ns {:level :info}}</code></td>
 </tr>
@@ -725,6 +725,11 @@
 <td><code>true</code></td>
 </tr>
 <tr>
+<td><code>text-document-sync-kind</code></td>
+<td>The sync kind during document changes, if client should send whole buffer or just related changes. Should be <code>:full</code> or <code>:incremental</code></td>
+<td><code>:full</code></td>
+</tr>
+<tr>
 <td><code>dependency-scheme</code></td>
 <td>How the dependencies should be linked, <code>jar</code> will make urls compatible with java's JarURLConnection. You can have the client make an lsp extension request of <code>clojure/dependencyContents</code> with the jar uri and the server will return the jar entry's contents. <a href="https://github.com/redhat-developer/vscode-java/blob/a24945453092e1c39267eac9367c759a6c7b0497/src/extension.ts#L290-L298">Similar to java clients</a></td>
 <td><code>zip</code></td>
@@ -756,6 +761,9 @@
 <p><code>clojure-lsp</code> uses <a href="https://github.com/clj-kondo/clj-kondo">clj-kondo</a> under the hood to lint the code and retrieve the analysis to
 make most of features work, you don't have to install clj-kondo to make it work, clojure-lsp will use a specific clj-kondo version 
 that can be retrieved in <code>clojure-lsp --version</code>, but make sure you have it properly configured in your <code>.clj-kondo/config.edn</code> file. </p>
+<p>You can disable clj-kondo diagnostics with:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="ss">:linters</span> <span class="p">{</span><span class="ss">:clj-kondo</span> <span class="p">{</span><span class="ss">:level</span> <span class="ss">:off</span><span class="p">}}}</span>
+</code></pre></div>
 <p>For more information about available configurations, 
 check the <a href="https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md">clj-kondo configuration section</a></p>
 <h4 id="clojure-lsp">clojure-lsp<a class="headerlink" href="#clojure-lsp" title="Permanent link">#</a></h4>
@@ -766,12 +774,14 @@ check the <a href="https://github.com/clj-kondo/clj-kondo/blob/master/doc/config
 <ul>
 <li><code>:level</code> with available values: <code>:info</code>, <code>:warning</code>, <code>:error</code> or <code>:off</code> with default value of <code>:info</code>.</li>
 <li><code>:exclude</code> a whole namespace with <code>#{my-ns}</code> or a specific var <code>#{my-ns/foo}</code>.</li>
+<li><code>:exclude-when-defined-by</code> excludes this linter when your var is defined by a macro for example, like <code>#{my-ns/deftest}</code>.</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="ss">:linters</span> <span class="p">{</span><span class="ss">:unused-public-var</span> <span class="p">{</span><span class="ss">:level</span> <span class="ss">:warning</span>
                                <span class="ss">:exclude</span> <span class="o">#</span><span class="p">{</span><span class="nv">my-ns/foo</span> 
                                           <span class="nv">my-ns/bar</span> 
-                                          <span class="nv">other-ns</span><span class="p">}}}}</span>
+                                          <span class="nv">other-ns</span><span class="p">}</span>
+                               <span class="ss">:exclude-when-defined-by</span> <span class="o">#</span><span class="p">{</span><span class="nv">my-ns/defflow</span><span class="p">}}}}</span>
 </code></pre></div>
 <p>For information on how to troubleshoot the linter, check the <a href="https://clojure-lsp.github.io/clojure-lsp/troubleshooting/">troubleshooting section</a></p>
                 
@@ -782,7 +792,7 @@ check the <a href="https://github.com/clj-kondo/clj-kondo/blob/master/doc/config
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 23, 2021</span>
     
   </small>
 </div>

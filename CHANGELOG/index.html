@@ -451,6 +451,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#20210321-232919" class="md-nav__link">
+    2021.03.21-23.29.19
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210318-192341" class="md-nav__link">
+    2021.03.18-19.23.41
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210316-202806" class="md-nav__link">
+    2021.03.16-20.28.06
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210314-232246" class="md-nav__link">
+    2021.03.14-23.22.46
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210306-170535" class="md-nav__link">
+    2021.03.06-17.05.35
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210305-133547" class="md-nav__link">
+    2021.03.05-13.35.47
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#20210301-191854" class="md-nav__link">
     2021.03.01-19.18.54
   </a>
@@ -727,6 +769,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#20210321-232919" class="md-nav__link">
+    2021.03.21-23.29.19
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210318-192341" class="md-nav__link">
+    2021.03.18-19.23.41
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210316-202806" class="md-nav__link">
+    2021.03.16-20.28.06
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210314-232246" class="md-nav__link">
+    2021.03.14-23.22.46
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210306-170535" class="md-nav__link">
+    2021.03.06-17.05.35
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20210305-133547" class="md-nav__link">
+    2021.03.05-13.35.47
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#20210301-191854" class="md-nav__link">
     2021.03.01-19.18.54
   </a>
@@ -984,9 +1068,46 @@
                 <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">#</a></h1>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <ul>
+<li>Migrate from lein to deps.edn</li>
+<li>Bump clj-kondo to 2021.03.22</li>
+</ul>
+<h2 id="20210321-232919">2021.03.21-23.29.19<a class="headerlink" href="#20210321-232919" title="Permanent link">#</a></h2>
+<ul>
+<li>Add code action 'resolve macro as', it requires client to fill the chosen macro and clj-kondo config file.</li>
+<li>Bump rewrite-clj to 1.0.594-alpha</li>
+<li>Bump data.json to 2.0.1</li>
+<li>Bump lsp4j to 0.11.0</li>
+</ul>
+<h2 id="20210318-192341">2021.03.18-19.23.41<a class="headerlink" href="#20210318-192341" title="Permanent link">#</a></h2>
+<ul>
+<li>Add support for diagnostic tags: deprecated and unnecessary.</li>
+<li>Fix wrong textDocument/documentHighlight for function local-usages.</li>
+<li>Use new clj-kondo <code>copy-configs</code> flag to copy hooks during lint.</li>
+<li>Bunp clj-kondo to fix unused public linter check for <code>:exclude-when-defined-by</code> </li>
+</ul>
+<h2 id="20210316-202806">2021.03.16-20.28.06<a class="headerlink" href="#20210316-202806" title="Permanent link">#</a></h2>
+<ul>
+<li>Fix server not analyzing after a wrong code on cljs files - #367</li>
+<li>Rollback incremental didChange adding a new <code>:text-document-sync-kind</code> setting with <code>:full</code> as default.</li>
+</ul>
+<h2 id="20210314-232246">2021.03.14-23.22.46<a class="headerlink" href="#20210314-232246" title="Permanent link">#</a></h2>
+<ul>
+<li>Fix completion inside refers, re-add support for it - Fixes #364</li>
+<li>Change range of expression functions clj-kondo diagnostics to avoid collision with function signature.</li>
+</ul>
+<h2 id="20210306-170535">2021.03.06-17.05.35<a class="headerlink" href="#20210306-170535" title="Permanent link">#</a></h2>
+<ul>
+<li>Fix incremental didChange, debouncing distincting by uri, fixing some inconsistent file changes
+when multiple files are changed at same time (rename, iedit, etc).</li>
+<li>Make unused-public-var ignore -main public functions.</li>
+<li>Add <code>:exclude-when-defined-by</code> option to <code>unused-public-var</code> linter, check settings documentation for more information.</li>
+</ul>
+<h2 id="20210305-133547">2021.03.05-13.35.47<a class="headerlink" href="#20210305-133547" title="Permanent link">#</a></h2>
+<ul>
 <li>Fix clojure-lsp lint crash when analyzing specific macros with clj-kondo hooks.</li>
 <li>Fix didChange for Nvim client.</li>
 <li>Add new clojure-lsp linter: unused-public-var - Fixes #359</li>
+<li>Add option to disable clj-kondo linter, check settings documentation for more details.</li>
 </ul>
 <h2 id="20210301-191854">2021.03.01-19.18.54<a class="headerlink" href="#20210301-191854" title="Permanent link">#</a></h2>
 <ul>
@@ -1177,7 +1298,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 23, 2021</span>
     
   </small>
 </div>
